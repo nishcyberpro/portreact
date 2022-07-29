@@ -4,16 +4,19 @@ import { Link, Outlet, useParams, withRouter } from 'react-router-dom';
 
 
 const Blogdash = () => {
+    const [pageno, setPageno] = useState(1)
+
 
     const [pages, setPages] = useState();
+    const [search, setSearch] = useState("");
     const [deleted, setDeleted] = useState(false)
     const getPages = () => {
-        let url = process.env.REACT_APP_SERVER_DOMAIN + '/api/blog'
-        axios.get(url)
+        axios.get(process.env.REACT_APP_SERVER_DOMAIN + '/api/blog?pageno=' + pageno + '&search_term=' + search)
             .then(res => {
                 console.log(res.data)
                 setPages(res.data)
                 setDeleted(false)
+
             })
 
 
@@ -25,13 +28,24 @@ const Blogdash = () => {
     useEffect(() => {
         getPages();
     }, [deleted])
+
+    useEffect(() => {
+        getPages();
+    }, [search])
+    useEffect(() => {
+        if (pageno == -1) {
+            setPageno(1)
+        }
+
+        getPages();
+    }, [pageno])
     if (!pages) {
         return <p>Loading...</p>
     }
 
     const deleteBlog = (da) => {
         console.log(da)
-        let url = process.env.REACT_APP_SERVER_DOMAIN + "/api/blog"
+        let url = process.env.REACT_APP_SERVER_DOMAIN + '/api/blog'
         axios.delete(url + '/' + da, {
             headers: {
                 "Authorization": `${localStorage.getItem("access_token")}`
@@ -48,13 +62,29 @@ const Blogdash = () => {
         }
     }
 
+    const searchBlog = (e) => {
+        console.log(e.target.value)
+        setSearch(e.target.value)
+    }
+
     return (
         <main>
 
 
 
             <h2>Blogs</h2>
-            <div><Link className='btn btn-outline-success' to="/dashboard/blog/create">Create New Blog Post</Link></div>
+            <div className='row'>
+                <div className='col'>
+                    <Link className='btn btn-outline-success' to="/dashboard/blog/create">Create New Blog Post</Link>
+                </div>
+                <div className='col'>
+                    <form className="d-flex" role="search">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={searchBlog} />
+                    </form>
+                </div>
+
+
+            </div>
             <div className="table-responsive">
                 <table className="table table-hover">
                     <thead>
@@ -80,6 +110,16 @@ const Blogdash = () => {
 
 
                     </tbody>
+                    <nav className="blog-pagination mt-4" aria-label="Pagination">
+                        <a className="btn btn-outline-primary rounded-pill " onClick={() => { setPageno(pageno - 1) }}>Newer</a>
+
+                        <a className="btn btn-outline-primary rounded-pill" onClick={() => {
+                            console.log("page count" + pages.count)
+
+                            setPageno(pageno + 1)
+
+                        }}>Older</a>
+                    </nav>
                 </table>
 
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ShowAbout from './ShowProtfolionComponent/ShowAbout'
 import ShowEducation from './ShowProtfolionComponent/ShowEducation'
@@ -29,7 +29,8 @@ const ProtfolionDash = () => {
                 if (res.data) {
                     console.log(res.data)
                     setAvailable("")
-                    setportlink(linkslug)
+                    setlinkslug(res.data.slug)
+                    setportlink(res.data.slug)
                     //now need to get all the data of user and insert into slug table
                 }
                 else {
@@ -39,6 +40,9 @@ const ProtfolionDash = () => {
                 }
             })
     }
+    useEffect(() => {
+        checkSlug();
+    }, [])
 
     const createLink = (e) => {
         e.preventDefault();
@@ -61,7 +65,7 @@ const ProtfolionDash = () => {
                     <div className='p-2 '><input type="text" placeholder='link-slug' value={linkslug} required onChange={handleChange}></input></div>
                     <div className='p-2 '>{available}</div>
 
-                    <div className='p-2'> <Link to={`/portfolio/${portlink}`} >{portlink}</Link></div>
+                    <div className='p-2'> <Link to={`/portfolio/${portlink}`} >{process.env.REACT_APP_SERVER_DOMAIN}/portfolio/{portlink}</Link></div>
 
 
                 </div>

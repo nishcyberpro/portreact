@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const LatestPost = () => {
+    const [pageno, setPageno] = useState(1)
+
     const [article, setArticle] = useState([])
 
     const getArticle = (() => {
-        axios.get(process.env.REACT_APP_SERVER_DOMAIN + '/api/blog')
+        axios.get(process.env.REACT_APP_SERVER_DOMAIN + '/api/blog?pageno=' + pageno)
             .then(res => {
                 console.log(res.data);
                 setArticle(res.data)
@@ -22,6 +24,15 @@ const LatestPost = () => {
     useEffect(() => {
         getArticle();
     }, [])
+
+    useEffect(() => {
+        console.log("calling")
+        if (pageno == -1) {
+            setPageno(1)
+        }
+        getArticle();
+    }, [pageno])
+
     return (
 
 
@@ -48,8 +59,8 @@ const LatestPost = () => {
 
 
             <nav className="blog-pagination" aria-label="Pagination">
-                <a className="btn btn-outline-primary rounded-pill" href="#">Older</a>
-                <a className="btn btn-outline-secondary rounded-pill disabled">Newer</a>
+                <a className="btn btn-outline-primary rounded-pill" onClick={() => { setPageno(pageno + 1) }}>Older</a>
+                <a className="btn btn-outline-primary rounded-pill " onClick={() => { setPageno(pageno - 1) }}>Newer</a>
             </nav>
 
         </div >
