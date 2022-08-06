@@ -10,7 +10,7 @@ import ShowSkill from './ShowProtfolionComponent/ShowSkill'
 
 const ProtfolionDash = () => {
 
-    const [linkslug, setlinkslug] = useState();
+    const [linkslug, setlinkslug] = useState("");
     const [portData, setPortdata] = useState();
     const [available, setAvailable] = useState('')
     const [portlink, setportlink] = useState('');
