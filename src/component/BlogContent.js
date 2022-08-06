@@ -1,14 +1,12 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Outlet, useNavigate, useParams } from 'react-router-dom'
-import Articles from './Articles'
-import LatestPost from './LatestPost'
+import { useParams } from 'react-router-dom'
+
 import SideBar from './SideBar'
 const BlogContent = () => {
     console.log()
     let { id } = useParams();
     const [content, setmyContent] = useState()
-    const navigate = useNavigate()
     const getBlogOfId = () => {
         let url = process.env.REACT_APP_SERVER_DOMAIN + "/getall/blog"
         axios.get(url + '/' + id)
@@ -35,6 +33,7 @@ const BlogContent = () => {
 
         return (
             <main className='container'>
+
                 {/* This is page to display single blogpsot */}
 
                 <div class="row g-5">

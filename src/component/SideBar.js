@@ -1,12 +1,13 @@
 import React from 'react'
-import LatestPost from './LatestPost'
 const SideBar = () => {
+
+
     return (
         <div className="col-md-4">
 
             <div className="position-sticky mysticky">
                 <div className="p-4 mb-3 bg-light rounded">
-                    <h4 className="fst-italic">About</h4>
+                    <h4 className="fst-italic">Popular</h4>
                     <p className="mb-0">Customize this section to tell your visitors a little bit about your publication, writers,
                         content, or something else entirely. Totally up to you.</p>
                     <a href="#" className="stretched-link">Continue reading</a>
@@ -14,7 +15,7 @@ const SideBar = () => {
                 </div>
 
                 <div className="p-4">
-                    <h4 className="fst-italic">Archives</h4>
+                    <h4 className="fst-italic">Recent Comment</h4>
                     <ol className="list-unstyled mb-0">
 
                     </ol>
