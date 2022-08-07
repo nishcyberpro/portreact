@@ -29,7 +29,7 @@ const Login = () => {
             password,
 
         }).then(res => {
-            setLoginResult(res.data.data)
+            setLoginResult(res.data)
             console.log(loginResult)
             if (res.data.access_token) {
                 loginState.logIn();
