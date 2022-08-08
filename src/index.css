@@ -24,3 +24,24 @@ article.blog-post img {
 .g-5 {
   --bs-gutter-x: 0;
 }
+
+.myport {
+  margin-top: 20px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+@media print {
+  .myport {
+    width: auto;
+  }
+
+  #pagenav {
+    display: none;
+  }
+
+  #navfooter {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 import Articles from './Articles'
 import LatestPost from './LatestPost'
@@ -23,13 +23,13 @@ const PageContent = () => {
     }
     console.log(id)
 
-    useState(() => {
+    useEffect(() => {
         getPagesOfId()
     }, [])
 
-    useState(() => {
+    useEffect(() => {
         getPagesOfId()
-    }, [pageid])
+    }, [id])
 
 
     if (!content) {

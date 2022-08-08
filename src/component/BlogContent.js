@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import SideBar from './SideBar'
@@ -22,9 +22,13 @@ const BlogContent = () => {
     }
     console.log(id)
 
-    useState(() => {
+    useEffect(() => {
         getBlogOfId()
     }, [])
+
+    useEffect(() => {
+        getBlogOfId()
+    }, [id])
 
     if (!content) {
         return <>Loading...</>

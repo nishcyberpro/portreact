@@ -74,7 +74,7 @@ function Navbar() {
 
 
     return (
-        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id='pagenav'>
             <div className="container-fluid">
                 <Link className='navbar-brand' to="/">NSN</Link>
 
@@ -90,7 +90,9 @@ function Navbar() {
 
                         {pages.map(el => {
                             return <li className="nav-item" key={el.slug}>
-                                <a className='nav-link' href={`/pages/${el.slug}`}> {el.title}</a>
+                                <Link className='nav-link' to={`/pages/${el.slug}`}>{el.title}</Link>
+
+                                {/* <a className='nav-link' href={`/pages/${el.slug}`}> {el.title}</a> */}
 
                             </li>
 

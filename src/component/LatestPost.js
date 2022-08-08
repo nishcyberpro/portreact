@@ -8,7 +8,7 @@ const LatestPost = () => {
     const [article, setArticle] = useState([])
 
     const getArticle = (() => {
-        axios.get(process.env.REACT_APP_SERVER_DOMAIN + '/api/blog?pageno=' + pageno + "&popular=true")
+        axios.get(process.env.REACT_APP_SERVER_DOMAIN + '/api/blog?pageno=' + pageno)
             .then(res => {
                 console.log(res.data);
                 setArticle(res.data)
