@@ -7,6 +7,7 @@ function Navbar() {
 
 
     const [pages, setPages] = useState()
+    const [searchTerm, setSearchTerm] = useState('')
     const [token, setToken] = useState()
     const navigate = useNavigate();
     const getPages = () => {
@@ -61,6 +62,25 @@ function Navbar() {
 
     }, [])
 
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value)
+
+
+
+    }
+
+    const handleKeyDown = (e) => {
+
+        if (e.key === 'Enter') {
+            e.preventDefault();
+
+            navigate(`/search/${searchTerm}`)
+            setSearchTerm("")
+        }
+
+
+    }
+
     // useEffect(() => {
     //     setToken(localStorage.getItem('access_token'))
 
@@ -104,8 +124,9 @@ function Navbar() {
 
 
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <form className="d-flex" role="search" >
+                        <input className="form-control me-2" placeholder="Search" aria-label="Search" value={searchTerm}
+                            onChange={handleChange} onKeyDown={handleKeyDown} />
                     </form>
 
                     {

@@ -59,8 +59,9 @@ const LatestPost = () => {
 
 
             <nav className="blog-pagination" aria-label="Pagination">
-                <a className="btn btn-outline-primary rounded-pill" onClick={() => { setPageno(pageno + 1) }}>Older</a>
                 <a className="btn btn-outline-primary rounded-pill " onClick={() => { setPageno(pageno - 1) }}>Newer</a>
+                <a className="btn btn-outline-primary rounded-pill" onClick={() => { setPageno(pageno + 1) }}>Older</a>
+
             </nav>
 
         </div >

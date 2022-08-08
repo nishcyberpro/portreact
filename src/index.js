@@ -35,6 +35,7 @@ import ShowPort from './component/Dashboard/ProtfolioComp/ShowProtfolionComponen
 import PageContent from './component/PageContent';
 import Footer from './component/Footer';
 import About from './component/Dashboard/ProtfolioComp/About';
+import SearchBlog from './component/SearchBlog';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -98,6 +99,10 @@ root.render(
           <Route path="/blog">
             <Route index element={<Blogpost />} />
             <Route path=":id" element={<BlogContent />} />
+          </Route>
+          <Route path="/search">
+            <Route index element={<SearchBlog />} />
+            <Route path=":id" element={<SearchBlog />} />
           </Route>
           <Route path="/pages" element={<Pages />}>
             <Route index />
