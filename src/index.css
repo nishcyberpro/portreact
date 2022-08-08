@@ -15,3 +15,12 @@ code {
 .quillformat {
   min-height: 100px;
 }
+
+article.blog-post img {
+
+  width: 70%;
+}
+
+.g-5 {
+  --bs-gutter-x: 0;
+}

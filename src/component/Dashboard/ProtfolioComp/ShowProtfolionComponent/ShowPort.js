@@ -18,18 +18,22 @@ const ShowPort = () => {
     const [skill, setSkill] = useState([])
 
     const printDocument = () => {
-        //const input = document.getElementById('divToPrint');
+        // const input = document.getElementById('port');
+        var printOutContent = document.getElementById('port').innerHTML;
+        var originalContent = document.body.innerHTML;
+        document.body.innerHTML = printOutContent;
+        window.print();
+        // document.body.innerHTML = originalContent;
+        // const doc = new jsPDF();
 
-        const doc = new jsPDF();
+        // //get table html
+        // const pdfTable = document.getElementById('port');
+        // //html to pdf format
+        // var html = htmlToPdfmake(pdfTable.innerHTML);
 
-        //get table html
-        const pdfTable = document.getElementById('divToPrint');
-        //html to pdf format
-        var html = htmlToPdfmake(pdfTable.innerHTML);
-
-        const documentDefinition = { content: html };
-        pdfMake.vfs = pdfFonts.pdfMake.vfs;
-        pdfMake.createPdf(documentDefinition).open();
+        // const documentDefinition = { content: html };
+        // pdfMake.vfs = pdfFonts.pdfMake.vfs;
+        // pdfMake.createPdf(documentDefinition).open();
 
     }
 
@@ -61,9 +65,9 @@ const ShowPort = () => {
     }
     return (
         <>
-            {/* <button class="btn btn-primary" onClick={printDocument}>Export To PDF</button> */}
+            <button class="btn btn-primary" onClick={printDocument}>Export To PDF</button>
 
-            <div class="container" id=''>
+            <div class="container" id='port'>
 
                 {about.map(el => {
                     return (
