@@ -23,7 +23,7 @@ const ShowPort = () => {
         var originalContent = document.body.innerHTML;
         document.body.innerHTML = printOutContent;
         window.print();
-        // document.body.innerHTML = originalContent;
+        document.body.innerHTML = originalContent;
         // const doc = new jsPDF();
 
         // //get table html
@@ -65,7 +65,7 @@ const ShowPort = () => {
     }
     return (
         <>
-            <button class="btn btn-primary" onClick={printDocument}>Export To PDF</button>
+            {/* <button class="btn btn-primary" onClick={printDocument}>Export To PDF</button> */}
 
             <div class="container" id='port'>
 

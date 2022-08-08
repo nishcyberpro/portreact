@@ -1,4 +1,5 @@
 import React from 'react'
+import Popular from './Popular'
 const SideBar = () => {
 
 
@@ -8,9 +9,8 @@ const SideBar = () => {
             <div className="position-sticky mysticky">
                 <div className="p-4 mb-3 bg-light rounded">
                     <h4 className="fst-italic">Popular</h4>
-                    <p className="mb-0">Customize this section to tell your visitors a little bit about your publication, writers,
-                        content, or something else entirely. Totally up to you.</p>
-                    <a href="#" className="stretched-link">Continue reading</a>
+                    <hr />
+                    <Popular />
 
                 </div>
 
@@ -21,12 +21,7 @@ const SideBar = () => {
                     </ol>
                 </div>
 
-                <div className="p-4">
-                    <h4 className="fst-italic">Elsewhere</h4>
-                    <ol className="list-unstyled">
 
-                    </ol>
-                </div>
             </div>
         </div>
     )
