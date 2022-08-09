@@ -1,13 +1,9 @@
-import fetch from 'isomorphic-unfetch';
 import React, { useEffect, useState } from 'react';
 import { useQuill } from 'react-quilljs';
 import sanitizeHtml from 'sanitize-html';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import Quill from 'quill/core';
-import Toolbar from 'quill/modules/toolbar';
-import Snow from 'quill/themes/snow';
-import htmlEditButton from "quill-html-edit-button";
+
 
 
 //remaining task is to upload featured image and multer
@@ -15,20 +11,12 @@ import htmlEditButton from "quill-html-edit-button";
 
 export default () => {
 
-    const theme = 'snow';
-    // const theme = 'bubble';
 
-    const modules = {
-        toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],
-        ],
-    };
 
-    const placeholder = 'Compose an epic...';
 
-    const formats = ['bold', 'italic', 'underline', 'strike'];
 
     const [files, setFiles] = useState([]);
+    const [urlim, setUrl] = useState();
 
     const { bid } = useParams();;
     const feturedState = 'checked'
@@ -42,6 +30,17 @@ export default () => {
 
 
     function handleFileChange(e) {
+        const imgData = new FormData()
+        imgData.append("file", e.target.files[0])
+        imgData.append("upload_preset", "qnnp1s7w")
+
+        axios.post("https://api.cloudinary.com/v1_1/dlexgdp4i/image/upload", imgData)
+            .then(res => {
+                console.log(res.data.url)
+                setUrl(res.data.url);
+
+            })
+
         setFiles(e.target.files)
     }
     // to edit the page get data from id of the page
@@ -63,6 +62,7 @@ export default () => {
     const editBLog = (form_data) => {
         let featured = isFeatured
         form_data.append("featured", featured)
+        form_data.append("url", urlim)
         let url = process.env.REACT_APP_SERVER_DOMAIN + "/api/blog"
         axios.put(url + '/' + bid, form_data, {
             headers: {
@@ -89,6 +89,7 @@ export default () => {
 
         let featured = isFeatured
         form_data.append("featured", featured)
+        form_data.append("url", urlim)
         let url = process.env.REACT_APP_SERVER_DOMAIN + "/api/blog"
         axios.post(url,
             form_data
