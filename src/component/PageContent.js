@@ -52,7 +52,6 @@ const PageContent = () => {
             <article className="Pages-post">
 
                 <div>
-                    <h3 className='text-align-center'>{content.title}</h3>
                     <hr />
 
                     <p><div dangerouslySetInnerHTML={{ __html: content.content }}
