@@ -36,6 +36,7 @@ import PageContent from './component/PageContent';
 import Footer from './component/Footer';
 import About from './component/Dashboard/ProtfolioComp/About';
 import SearchBlog from './component/SearchBlog';
+import OrderDash from './component/Dashboard/OrderDash';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -55,6 +56,11 @@ root.render(
             </Route>
             <Route path="/dashboard/pages">
               <Route index element={<Pagedash />} />
+              <Route path=":id" element={<BlogPageCreate />} />
+
+            </Route>
+            <Route path="/dashboard/orders">
+              <Route index element={<OrderDash />} />
               <Route path=":id" element={<BlogPageCreate />} />
 
             </Route>
@@ -89,6 +95,7 @@ root.render(
 
 
             </Route>
+
             <Route path="/dashboard/account">
               <Route index element={<MyAccount />} />
 

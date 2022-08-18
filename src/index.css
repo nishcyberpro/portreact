@@ -32,6 +32,16 @@ article.blog-post img {
   margin-right: 10%;
 }
 
+.linkresume {
+  color: white;
+  text-decoration: none;
+}
+
+.linkresume:hover {
+  color: white;
+  text-decoration: none;
+}
+
 @media print {
   .myport {
     width: auto;

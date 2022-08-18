@@ -86,7 +86,7 @@ function Navigation() {
                             </li>
                         </ul>}   {isSeller && <ul className="nav flex-column">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/dashboard/contact">
+                                <Link className="nav-link" to="/dashboard/orders">
                                     <span data-feather="users" className="align-text-bottom"></span>
                                     Orders
                                 </Link>
