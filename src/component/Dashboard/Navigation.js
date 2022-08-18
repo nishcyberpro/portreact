@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 function Navigation() {
     const [user, setUser] = useState()
     const [isAdmin, setisAdmin] = useState(false)
+    const [isSeller, setIsSeller] = useState(false)
     const getUser = () => {
         let url = process.env.REACT_APP_SERVER_DOMAIN + "/api/user/data"
         axios.post(url, {
@@ -19,6 +20,10 @@ function Navigation() {
             setUser(data.data)
             if (data.data.role === 'Admin') {
                 setisAdmin(true)
+            }
+            else if (data.data.role === 'seller') {
+                setIsSeller(true)
+
             }
             console.log(isAdmin)
         })
@@ -75,6 +80,15 @@ function Navigation() {
                                 <Link className="nav-link" to="/dashboard/contact">
                                     <span data-feather="users" className="align-text-bottom"></span>
                                     Messages
+                                </Link>
+
+
+                            </li>
+                        </ul>}   {isSeller && <ul className="nav flex-column">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/dashboard/contact">
+                                    <span data-feather="users" className="align-text-bottom"></span>
+                                    Orders
                                 </Link>
 
 
