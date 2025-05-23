@@ -37,6 +37,7 @@ import Footer from './component/Footer';
 import About from './component/Dashboard/ProtfolioComp/About';
 import SearchBlog from './component/SearchBlog';
 import OrderDash from './component/Dashboard/OrderDash';
+import PrivacyPolicy from './component/Privacy';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -103,6 +104,7 @@ root.render(
           </Route>
 
           <Route path="/login" element={<Login />} />
+          <Route path="/privacysticky" element={<PrivacyPolicy />} />
           <Route path="/blog">
             <Route index element={<Blogpost />} />
             <Route path=":id" element={<BlogContent />} />
